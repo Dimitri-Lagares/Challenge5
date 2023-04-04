@@ -7,6 +7,9 @@ const PUERTO = process.env.PORT || 3055;
 
 const app = express();
 
+let cors = require("cors");
+app.use(cors());
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -59,7 +62,7 @@ app.get('/catalogo/:id', (req, res) => {
 app.post('/agregar', (request, response) => {
     connection.query('INSERT INTO catalogocarros SET ?', request.body, (error, result) => {
         if (error) throw error;
-        response.send('Usuario añadido');
+        response.send('Añadido exitosamente');
     });
 });
 
